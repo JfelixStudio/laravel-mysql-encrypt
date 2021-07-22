@@ -1,8 +1,8 @@
 <?php
 
-namespace Chr15k\MysqlEncrypt\Traits;
+namespace JfelixStudio\MysqlEncrypt\Traits;
 
-use Chr15k\MysqlEncrypt\Scopes\DecryptSelectScope;
+use JfelixStudio\MysqlEncrypt\Scopes\DecryptSelectScope;
 
 trait Encryptable
 {
@@ -37,7 +37,7 @@ trait Encryptable
         return $this->encryptable ?? [];
     }
 
-   /**
+    /**
      * where for encrypted columns
      *
      * @param $query

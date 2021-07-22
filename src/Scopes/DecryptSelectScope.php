@@ -1,6 +1,6 @@
 <?php
 
-namespace Chr15k\MysqlEncrypt\Scopes;
+namespace JfelixStudio\MysqlEncrypt\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
