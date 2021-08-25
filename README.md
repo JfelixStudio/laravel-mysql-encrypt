@@ -98,6 +98,7 @@ exists_encrypted:<table>,<field(optional)>
 Custom Local scopes available:
 
 `whereEncrypted`
+`whereInEncrypted`
 `whereNotEncrypted`
 `orWhereEncrypted`
 `orWhereNotEncrypted`
