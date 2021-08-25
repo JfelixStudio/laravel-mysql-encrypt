@@ -44,7 +44,7 @@ if (!function_exists('db_decrypt_string')) {
      */
     function db_decrypt_string($column, $value, $operator = '=')
     {
-        // return 'AES_DECRYPT('.$column.', "'.config("mysql-encrypt.key").'") '.$operator.' "'.$value.'" COLLATE utf8mb4_general_ci';
-        return $column . ' ' . $operator . ' AES_ENCRYPT(' . $value . ', "' . config("mysql-encrypt.key") . '")';
+        // return 'AES_DECRYPT(' . $column . ', "' . config("mysql-encrypt.key") . '") ' . $operator . ' "' . $value . '" COLLATE utf8mb4_general_ci';
+        return $column . ' ' . $operator . ' AES_ENCRYPT("' . $value . '", "' . config("mysql-encrypt.key") . '")';
     }
 }
