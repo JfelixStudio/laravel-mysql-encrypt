@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-if (! function_exists('db_encrypt')) {
+if (!function_exists('db_encrypt')) {
     /**
      * Encrypt value.
      *
@@ -17,7 +17,7 @@ if (! function_exists('db_encrypt')) {
     }
 }
 
-if (! function_exists('db_decrypt')) {
+if (!function_exists('db_decrypt')) {
     /**
      * Decrpyt value.
      *
@@ -33,7 +33,7 @@ if (! function_exists('db_decrypt')) {
 }
 
 
-if (! function_exists('db_decrypt_string')) {
+if (!function_exists('db_decrypt_string')) {
     /**
      * Decrpyt value.
      *
@@ -42,8 +42,9 @@ if (! function_exists('db_decrypt_string')) {
      * @param  string  $operator
      * @return string
      */
-    function db_decrypt_string($column, $value, $operator = 'LIKE')
+    function db_decrypt_string($column, $value, $operator = '=')
     {
-        return 'AES_DECRYPT('.$column.', "'.config("mysql-encrypt.key").'") '.$operator.' "'.$value.'" COLLATE utf8mb4_general_ci';
+        // return 'AES_DECRYPT('.$column.', "'.config("mysql-encrypt.key").'") '.$operator.' "'.$value.'" COLLATE utf8mb4_general_ci';
+        return $column . ' ' . $operator . ' AES_ENCRYPT(' . $value . ', "' . config("mysql-encrypt.key") . '")';
     }
 }
