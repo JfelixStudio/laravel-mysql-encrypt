@@ -53,6 +53,32 @@ trait Encryptable
     }
 
     /**
+     * whereIn for encrypted columns
+     *
+     * @param $query
+     * @param $column
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function scopeWhereInEncrypted($query, $column, $value)
+    {
+        /** @var Builder $query */
+        if (is_array($value) || $value->count() > 1) {
+            for ($i = 0; $i < count($value); $i++) {
+                if ($i === 0) {
+                    $query->whereRaw(db_decrypt_string($column, $value[$i]));
+                } else {
+
+                    $query->orWhereRaw(db_decrypt_string($column, $value[$i]));
+                }
+            }
+            return $query;
+        }
+        return $query->whereRaw(db_decrypt_string($column, $value));
+    }
+
+    /**
      * where not for encrypted columns
      *
      * @param $query
