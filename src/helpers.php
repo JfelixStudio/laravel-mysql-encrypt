@@ -12,8 +12,8 @@ if (!function_exists('db_encrypt')) {
     function db_encrypt($value)
     {
         $key = config('mysql-encrypt.key');
-
-        return DB::raw("AES_ENCRYPT(" . $value . ", " . $key . ")");
+        $newValue = str_replace("'", "", $value);
+        return DB::raw("AES_ENCRYPT('{$newValue}', '{$key}')");
     }
 }
 
