@@ -13,7 +13,7 @@ if (!function_exists('db_encrypt')) {
     {
         $key = config('mysql-encrypt.key');
 
-        return DB::raw('AES_ENCRYPT("{$value}", "{$key}")');
+        return DB::raw("AES_ENCRYPT(" . $value . ", " . $key . ")");
     }
 }
 
